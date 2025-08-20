@@ -1,0 +1,117 @@
+[build-system]
+requires = ["poetry-core>=2.0.0", "poetry-dynamic-versioning>=1.0.0,<2.0.0"]
+build-backend = "poetry_dynamic_versioning.backend"
+
+[project]
+name = "devcontainer-python"
+description = "A template for Python development using devcontainers"
+authors = [{ name = "Tomáš Režňák", email = "tomas.reznak@volny.cz" }]
+keywords = ["devcontainer", "docker", "python", "template", "vscode"]
+license = "MIT"
+readme = "README.md"
+dynamic = ["version", "classifiers"]
+requires-python = ">=3.10,<4.0"
+dependencies = []
+
+[project.urls]
+"GitHub" = "https://github.com/reznakt/devcontainer-python"
+"Issues" = "https://github.com/reznakt/devcontainer-python/issues"
+
+[tool.poetry]
+classifiers = [
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Typing :: Typed",
+]
+requires-poetry = ">=2.0.0,<3.0.0"
+version = "0.0.0" # managed by poetry-dynamic-versioning, DO NOT EDIT
+
+[tool.poetry.requires-plugins]
+"poetry-dynamic-versioning" = ">=1.0.0,<2.0.0"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+vcs = "git"
+style = "semver"
+
+[tool.poetry.scripts]
+start = "devcontainer_python.__main__:main"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.1"
+pytest-clarity = "^1.0.1"
+pytest-cov = "^6.2.1"
+pytest-randomly = "^3.16.0"
+pytest-sugar = "^1.1.0"
+
+[tool.poetry.group.dev.dependencies]
+poethepoet = "^0.37.0"
+pre-commit = "^4.3.0"
+pyright = "^1.1.403"
+ruff = "^0.12.9"
+vermin = "^1.6.0"
+licensecheck = "^2025.1.0"
+
+[tool.poe.tasks]
+start = "poetry run start"
+test = "pytest"
+typecheck = "pyright --warnings"
+lint = "ruff check"
+lint-fix = "ruff check --fix"
+format = "ruff format --diff"
+format-fix = "ruff format"
+versioncheck = "vermin ."
+licensecheck = "licensecheck"
+
+[tool.pytest.ini_options]
+addopts = ["--cov", "--doctest-continue-on-failure", "--doctest-modules"]
+
+[tool.coverage.run]
+omit = ["tests/*"]
+
+[tool.pyright]
+deprecateTypingAliases = false        # covered by Ruff + shows false positives
+enableReachabilityAnalysis = true
+pythonPlatform = "All"
+pythonVersion = "3.10"
+reportInvalidTypeVarUse = true
+reportMissingImports = true
+reportMissingTypeArgument = true
+reportMissingTypeStubs = false
+reportPrivateUsage = true
+reportUnknownArgumentType = false
+reportUnknownMemberType = false
+reportUnknownParameterType = false
+reportUnknownVariableType = false
+reportUnnecessaryCast = true
+reportUnnecessaryComparison = true
+reportUntypedFunctionDecorator = true
+reportUnusedImport = false            # covered by Ruff
+strictDictionaryInference = true
+strictListInference = true
+strictSetInference = true
+typeCheckingMode = "strict"
+
+[tool.ruff]
+target-version = "py310"
+show-fixes = true
+line-length = 75         # formatter
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "C4", "SIM"]
+fixable = ["ALL"]
+
+[tool.ruff.lint.pycodestyle]
+max-line-length = 79 # linter
+
+[tool.ruff.lint.isort]
+lines-after-imports = 2
+split-on-trailing-comma = false
+
+[tool.ruff.format]
+docstring-code-format = true
+skip-magic-trailing-comma = true
+
+[tool.licensecheck]
+format = "ansi"
+zero = true

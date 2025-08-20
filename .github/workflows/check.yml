@@ -1,0 +1,50 @@
+name: check
+
+on:
+  - push
+  - pull_request
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5.0.0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5.6.0
+        with:
+          python-version: "3.10"
+
+      - name: Set up poetry
+        uses: abatilo/actions-poetry@v4.0.0
+        with:
+          poetry-version: "2.1.4"
+
+      - name: Install dependencies
+        run: poetry install --only main,dev
+
+      - name: Run linter
+        run: poetry run poe lint
+
+      - name: Run formatter
+        run: poetry run poe format
+
+      - name: Run version check
+        run: poetry run poe versioncheck
+
+      - name: Run license check
+        run: poetry run poe licensecheck --requirements-paths=pyproject.toml
+
+      - name: Install test dependencies
+        run: poetry install --only main,dev,test
+
+      - name: Run tests
+        run: poetry run poe test --cov-branch --cov-report=xml --junitxml=junit.xml -o junit_family=legacy
+
+      - name: Run type checking
+        run: poetry run poe typecheck

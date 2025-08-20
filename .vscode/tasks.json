@@ -1,0 +1,86 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "install",
+      "type": "shell",
+      "command": "poetry",
+      "args": [
+        "install"
+      ]
+    },
+    {
+      "label": "start",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "start"
+      ],
+      "isBackground": true
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "test"
+      ]
+    },
+    {
+      "label": "typecheck",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "typecheck"
+      ]
+    },
+    {
+      "label": "lint",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "lint"
+      ]
+    },
+    {
+      "label": "lint-fix",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "lint-fix"
+      ]
+    },
+    {
+      "label": "format",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "format"
+      ]
+    },
+    {
+      "label": "format-fix",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "format-fix"
+      ]
+    },
+    {
+      "label": "versioncheck",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "versioncheck"
+      ]
+    },
+    {
+      "label": "licensecheck",
+      "type": "shell",
+      "command": "poe",
+      "args": [
+        "licensecheck"
+      ]
+    }
+  ]
+}
