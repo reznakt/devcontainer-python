@@ -42,13 +42,13 @@ pytest = "^8.4.1"
 pytest-clarity = "^1.0.1"
 pytest-cov = "^6.2.1"
 pytest-randomly = "^3.16.0"
-pytest-sugar = "^1.1.0"
+pytest-sugar = "^1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.37.0"
 pre-commit = "^4.3.0"
-pyright = "^1.1.403"
-ruff = "^0.12.9"
+pyright = "^1.1.404"
+ruff = "^0.12.11"
 vermin = "^1.6.0"
 licensecheck = "^2025.1.0"
 
