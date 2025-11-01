@@ -38,18 +38,18 @@ style = "semver"
 start = "devcontainer_python.__main__:main"
 
 [tool.poetry.group.test.dependencies]
-pytest = "^8.4.1"
+pytest = "^8.4.2"
 pytest-clarity = "^1.0.1"
-pytest-cov = "^6.2.1"
-pytest-randomly = "^3.16.0"
-pytest-sugar = "^1.1.0"
+pytest-cov = "^7.0.0"
+pytest-randomly = "^4.0.1"
+pytest-sugar = "^1.1.1"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.37.0"
 pre-commit = "^4.3.0"
-pyright = "^1.1.403"
-ruff = "^0.12.9"
-vermin = "^1.6.0"
+pyright = "^1.1.407"
+ruff = "^0.14.3"
+vermin = "^1.7.0"
 licensecheck = "^2025.1.0"
 
 [tool.poe.tasks]
